@@ -56,10 +56,3 @@ The browser sends JSON messages to `/ws/transcribe`:
 - `{ "type": "stop" }`
 
 The server forwards PCM audio to Gemini Live and emits `{ "type": "transcript", "text": "..." }` when incremental input transcription arrives. On stop, the client saves the completed transcript through the REST API.
-
-## Important notes
-
-- Keep the Gemini API key on the server; never put it in Vite variables or frontend code.
-- Browser microphone access requires HTTPS in deployed environments (localhost is allowed for development).
-- The Live API expects 16-bit little-endian PCM at 16 kHz. The included browser capture resamples audio and encodes PCM before sending.
-- This is an assignment starter, not a production-secure deployment: add authentication, rate limiting, user ownership, quotas, and stronger WebSocket session validation before public deployment.
